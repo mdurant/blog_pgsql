@@ -3,11 +3,20 @@ class PostsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
+  def index
+    if params.key?(:query) && !params[:query].empty?
+      @posts = []
+      Post.
+    else
+      @posts = Post.all
+    end
+  end
+
   # GET /posts
   # GET /posts.json
-  def index
-    @posts = Post.all
-  end
+  # def index
+  #   @posts = Post.all
+  # end
 
   # GET /posts/1
   # GET /posts/1.json

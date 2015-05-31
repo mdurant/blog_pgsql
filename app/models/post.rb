@@ -1,5 +1,9 @@
 class Post < ActiveRecord::Base
 
+  include PgSearch
+  #agregar los parametros de busqueda segun 1 o n campos o parametros
+  multisearchable against: [:title, :content]
+  
   validates :title, presence: true
   validates :content, presence: true
 
